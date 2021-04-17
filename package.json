@@ -11,9 +11,13 @@
     "url": "git+https://github.com/olawolu/shortly.git"
   },
   "author": "Gbenga Olawolu",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/olawolu/shortly/issues"
   },
-  "homepage": "https://github.com/olawolu/shortly#readme"
+  "homepage": "https://github.com/olawolu/shortly#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "graphql": "^15.5.0"
+  }
 }

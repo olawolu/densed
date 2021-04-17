@@ -1,0 +1,14 @@
+const mongoose = require("mongoose")
+
+const urlSchema = new mongoose.Schema(
+    {
+        originalurl: {
+            type: String,
+            required: true,
+        },
+        shortUrl: String,
+    },
+    { timestamps: true }
+)
+
+module.exports = mongoose.model("UrlEntry", urlSchema)
