@@ -14,7 +14,9 @@ app.use("/graphiql", graphqlHTTP({
 }));
 
 app.get('/:hash', async (req, res) => {
-    const short = req.get('host') + req.originalUrl
+    const base_url = process.env.BASE
+    const short = base_url + req.originalUrl
+    console.log(req.originalUrl);
     console.log(short);
     const urlEntry = await UrlEntry.findOne({ shortUrl: short })
     if (urlEntry) {
