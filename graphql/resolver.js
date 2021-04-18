@@ -1,9 +1,10 @@
 const UrlEntry = require("../models/urls")
+const shortener = require('../shortener')
 
 module.exports = {
     getUrls: async () => {
         try {
-            const urls = await Url.find()
+            const urls = await UrlEntry.find()
             return urls.map(url => {
                 return {
                     ...url._doc,
@@ -18,8 +19,9 @@ module.exports = {
 
     shortenUrl: async args => {
         try {
+            const base_url = process.env.BASE
             const originalUrl = args.originalUrl
-            const shortUrl
+            const shortUrl = base_url + "/" + shortener.hashUrl(originalUrl)
             const urlEntry = new UrlEntry({
                 originalUrl,
                 shortUrl
