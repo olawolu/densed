@@ -3,7 +3,7 @@ const { buildSchema } = require("graphql")
 module.exports = buildSchema(`
     type UrlEntry{
         _id: ID!
-        originalurl: String!
+        originalUrl: String!
         shortUrl: String
         createdAt: String!
     }
@@ -13,7 +13,7 @@ module.exports = buildSchema(`
    }
 
    type Mutation {
-       shortenUrl(originalUrl:String):UrlEntry
+       shortenUrl(originalUrl:String!):UrlEntry
    }
 
    schema {
