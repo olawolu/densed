@@ -1,5 +1,6 @@
+const validUrl = require('valid-url')
 const UrlEntry = require("../models/urls")
-const shortener = require('../shortener')
+const shortener = require('../middleware/shortener')
 
 module.exports = {
     getUrls: async () => {
@@ -21,14 +22,18 @@ module.exports = {
         try {
             const base_url = process.env.BASE
             const originalUrl = args.originalUrl
-            const shortUrl = base_url + "/" + shortener.hashUrl(originalUrl)
-            const urlEntry = new UrlEntry({
-                originalUrl,
-                shortUrl
-            })
-            const newUrlEntry = await urlEntry.save()
-            return {
-                ...newUrlEntry._doc, _id: newUrlEntry.id
+            if (validUrl.isUri(originalUrl)) {
+                const shortUrl = base_url + "/" + shortener.hashUrl(originalUrl)
+                const urlEntry = new UrlEntry({
+                    originalUrl,
+                    shortUrl
+                })
+                const newUrlEntry = await urlEntry.save()
+                return {
+                    ...newUrlEntry._doc, _id: newUrlEntry.id
+                }
+            } else {
+                return "Invalid Url"
             }
         } catch (error) {
             throw error
