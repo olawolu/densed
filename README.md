@@ -1,6 +1,6 @@
 # Densed - A URL shortner
 
-Densed is a graphql URL shortner api built with nodejs and mongodb. The api is hosted on [densed.herokuapp.com](https://densed.herokuapp.com).
+Densed is a graphql URL shortner api built with nodejs and mongodb. The api is hosted on [densed.herokuapp.com/graphiql](https://densed.herokuapp.com/graphiql).
 
 ## Usage
 
